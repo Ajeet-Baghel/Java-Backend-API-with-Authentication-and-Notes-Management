@@ -116,6 +116,18 @@ docker run -p 8080:8080 `
 
 (`host.docker.internal` lets the container reach a PostgreSQL instance running on your machine.)
 
+### Run on H2 instead (no PostgreSQL needed)
+
+```powershell
+docker run -p 8080:8080 -e SPRING_PROFILES_ACTIVE=h2 notes-api
+# or locally:
+.\mvnw.cmd spring-boot:run "-Dspring-boot.run.profiles=h2"
+```
+
+With the `h2` profile the app uses an in-memory H2 database and the console is
+available at `http://localhost:8080/h2-console`
+(JDBC URL `jdbc:h2:mem:notesdb`, user `sa`, empty password).
+
 ## Project layout
 
 ```

@@ -1,0 +1,23 @@
+spring:
+  application:
+    name: notes-api
+  datasource:
+    # Paste your PostgreSQL connection details here (or override via env vars).
+    url: ${DB_URL:jdbc:postgresql://localhost:5432/notesdb}
+    username: ${DB_USERNAME:postgres}
+    password: ${DB_PASSWORD:postgres}
+  jpa:
+    hibernate:
+      ddl-auto: update
+    open-in-view: false
+  h2:
+    console:
+      enabled: true
+
+server:
+  port: 8080
+
+jwt:
+  # Dev-only default. Override with the JWT_SECRET env var in real deployments.
+  secret: ${JWT_SECRET:MDQ0ZmI4Y2EtZGV2LXNlY3JldC1rZXktZm9yLWp3dC1zaWduaW5nLW5vdGVzLWFwaS0yMDI2}
+  expiration-ms: ${JWT_EXPIRATION_MS:86400000}
